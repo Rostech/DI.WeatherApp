@@ -6,6 +6,8 @@ namespace DI.WeatherApp.Data
 {
     public class DummyWeatherForecastRepository : IDummyWeatherForecastRepository
     {
+        #region Private fields
+
         private static readonly string[] Summaries = new[]
         {
             "Warm", "Bring an umbrella", "Chilly", "Freezing"
@@ -21,6 +23,9 @@ namespace DI.WeatherApp.Data
             "Sofia", "London", "New York", "Brisbane", "Novosibirsk"
         };
 
+        #endregion
+
+        /// <inheritdoc/>
         public IEnumerable<WeatherForecastDbo> Get()
         {
             var random = new Random();

@@ -8,11 +8,18 @@ namespace DI.WeatherApp.ConsoleClient
     {
         private readonly IWeatherService weatherService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherDataConsumer"/> class.
+        /// </summary>
+        /// <param name="weatherService">The weather service.</param>
         public WeatherDataConsumer(IWeatherService weatherService)
         {
             this.weatherService = weatherService;
         }
 
+        /// <summary>
+        /// Displays data on the console with the ConsoleTable and Humanize libraries
+        /// </summary>
         public void Display()
         {
             var table = new ConsoleTable(
