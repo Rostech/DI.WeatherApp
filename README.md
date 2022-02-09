@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ### 🧑‍🎓 Disclaimer:
-This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. 
+This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. You can demo source code below.
 
 # Dependency Inversion
 ## 🧠 Definition
