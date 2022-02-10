@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using DI.WeatherApp.Data;
 
 namespace DI.WeatherApp.Services
 {
@@ -20,13 +18,7 @@ namespace DI.WeatherApp.Services
         /// <inheritdoc/>
         public IEnumerable<WeatherForecast> Get()
         {
-            return this.weatherForecastRepository.Get().Select(w => new WeatherForecast()
-            {
-                CityName = w.CityName,
-                Date = w.Date,
-                Summary = w.Summary,
-                TemperatureC = w.TemperatureC
-            });
+            return this.weatherForecastRepository.Get();
         }
     }
 }
