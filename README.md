@@ -341,4 +341,4 @@ To verify that dependency was indeed inverted, we will introduce a change in the
     
 ## 🎉 We can make changes to the lower level DI.WeatherApp.Data project, and this won't affect higher 
     
-🔗 [Check out this PR to see what was changed so that the project is following dependency inversion principle](https://github.com/Rostech/DI.WeatherApp/pull/4/files)
+🔗 [Check out this PR to see what was changed so that the project is following dependency inversion principle](https://github.com/Rostech/DI.WeatherApp/pull/5/commits)
