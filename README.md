@@ -37,7 +37,7 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
   A simple console client to display dummy weather data. This represents the UI layer and orchestrates the dependency injection. 
   
   <details>
-    <summary>Startup.cs</summary><blockquote>
+    <summary>Startup.cs - Adds services to the DI container. Entry point for the console app. </summary><blockquote>
      
   ```
   static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,7 +60,7 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
   <blockquote></details>  
     
   <details>
-    <summary>WeatherDataConsumer.cs</summary><blockquote>
+    <summary>WeatherDataConsumer.cs - simple console UI build with ConsoleTables and Humanize</summary><blockquote>
      
   ```
    public class WeatherDataConsumer
