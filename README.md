@@ -6,7 +6,7 @@
 [![Generic badge](https://img.shields.io/badge/Reading-4min-<COLOR>.svg)]()
 
 ### 🧑‍🎓 Disclaimer:
-This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. You can demo source code below.
+This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. You can check out the demo source code below.
 
 # Dependency Inversion
 ## 🧠 Definition
@@ -27,8 +27,11 @@ High-level (client) modules should own the abstraction otherwise the dependency 
 
 ## 🧰 Demo
 
-I made this demo as a note to myself, say for future references, if/when I don't feel confident enough that I understand what **DI** is all about.
-Over the years I've been reading about SOLID and DI all over the web, but I think it's best explained in simple N-layered architecture so I'll try doing just that. 
+This demo is a note to myself, say for future references, if/when I don't feel confident enough that I understand in practice what **DI** is all about.
+I think dependency inversion is best explained in simple N-layered architecture so I'll try doing just that. 
+
+![console-ui](https://user-images.githubusercontent.com/10576276/153451888-c6f22f1b-15fe-4fd9-99cd-3db2cfad4569.png)
+
 
 **DI.WheatherApp** is a simple demo project. It's organized like this:
 <details>
