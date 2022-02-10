@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DI.WeatherApp.Services\DI.WeatherApp.Services.csproj" />
+  </ItemGroup>
+
 </Project>
