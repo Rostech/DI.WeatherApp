@@ -114,7 +114,7 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
   <summary>Business Logic Layer</summary><blockquote>
   
   ### DI.WeatherApp.Services
-  This represents the business layer and here you woul usually have some business logic. Current setup is for demo purposes.
+  This represents the business layer.
   
   <details>
       <summary>WeatherService.cs - weather service that uses the dummy weather forecast repository to return data</summary><blockquote>
@@ -193,5 +193,91 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
 
 
 <details>
-  <summary>Data access Layer</summary>
-</details>
+  <summary>Data access Layer</summary><blockquote>
+  
+  ### DI.WeatherApp.Data
+  Represents the data access layer.
+  
+  <details>
+    <summary>DummyWeatherForecastRepository.cs - dummy weather data repository</summary><blockquote>  
+    
+    public class DummyWeatherForecastRepository : IDummyWeatherForecastRepository
+    {
+        #region Private fields
+
+        private static readonly string[] Summaries = new[]
+        {
+            "Warm", "Bring an umbrella", "Chilly", "Freezing"
+        };
+
+        private static readonly int[] Temperatures = new[]
+        {
+            20, 10, 5, -4
+        };
+
+        private static readonly string[] CityNames = new[]
+        {
+            "Sofia", "London", "New York", "Brisbane", "Novosibirsk"
+        };
+
+        #endregion
+
+        /// <inheritdoc/>
+        public IEnumerable<WeatherForecastDbo> Get()
+        {
+            var random = new Random();
+
+            return Enumerable.Range(1, CityNames.Length - 1)
+                .Select(i =>
+                {
+                    var randomIndex = random.Next(Summaries.Length);
+
+                    return new WeatherForecastDbo
+                    {
+                        CityName = CityNames[i],
+                        Date = DateTime.Now.AddDays(1),
+                        Summary = Summaries[randomIndex],
+                        TemperatureC = Temperatures[randomIndex]
+                    };
+                })
+                .ToArray();
+        }
+    }
+    
+  <blockquote></details>
+  
+  <details>
+    <summary>IDummyWeatherForecastRepository.cs - abstraction over the DummyWeatherForecastRepository class</summary><blockquote>  
+  <blockquote></details>
+  
+  <details>  
+    <summary>WeatherForecastDbo.cs - Weather Data Dbo</summary><blockquote>  
+    
+    public class WeatherForecastDbo
+    {
+        /// <summary>
+        /// Gets or sets the name of the city.
+        /// </summary>
+        public string CityName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date.
+        /// </summary>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Gets or sets the temperature in Celsius.
+        /// </summary>
+        public int TemperatureC { get; set; }
+
+        /// <summary>
+        /// Gets or sets the summary.
+        /// </summary>
+        public string Summary { get; set; }
+    }
+    
+  <blockquote></details>
+    
+<blockquote></details>
+    
+ #### Altho we have some dependency injection in this setup, we are not inverting any dependencies thus not implementing the dependency inversion principle. 
