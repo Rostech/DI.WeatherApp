@@ -287,7 +287,7 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
 As shown in the graph, the dependency is not inverted and the UI is depending on Business layer, which dependes on Data layer. 
 This means that the higher level layer depends on the implementation details of the lower level layer. We're trying to use an interface to decouple this dependency but this is not enough. 
 ### So what?!
-To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer. Lets say that we need to change a propery name in the WeatherForecastDbo.cs
+To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer. Lets say that we need to change a propery name in the ```WeatherForecastDbo.cs```
     
 ![changed-property-name](https://user-images.githubusercontent.com/10576276/153416701-2c656ac5-5f45-4c31-a51d-050ddc5712d8.png)
 
@@ -310,7 +310,28 @@ To fix this, we need to folow the simple rule - the client (higher modules) own 
 
     ![invert-project-dependencies](https://user-images.githubusercontent.com/10576276/153431201-b2077d3a-b322-45f8-8f2d-8f6e07d1c6ba.png)
 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    
     ![interface-implementation](https://user-images.githubusercontent.com/10576276/153431241-b410afc9-c757-4194-a76f-57b179e392c2.png)
+    
+3. ### Register all dependencies in the UI layer.
+    In our case the UI layer is the composition route for all dependencies.
+    
+    ![register-data-layer-in-ui](https://user-images.githubusercontent.com/10576276/153446989-e5250e3b-b216-4788-a409-5817b6b615fc.png)
+    
+    Without dependency injection we can not achieve dependency inversion.
+    
+    ![dependency-injection-configuration](https://user-images.githubusercontent.com/10576276/153447553-e25d72e6-5e47-4245-ba6c-d3484161ebd0.png)
+
+
+### Did we solve the dependency issue? 
+
+This time if we introduce a change in the Data layer like before, the error will be contained only in the ```DI.WeatherApp.Data``` and we don't need to update higher level modules.
+
+![inverted-dependency](https://user-images.githubusercontent.com/10576276/153450365-a9be6cf7-942d-4ea0-ac14-fed620f9855a.png)
 
     
+### This is what the layers dependencies look like now 
+    
+![inverted-dependency-flow-chart](https://user-images.githubusercontent.com/10576276/153450900-c7c486be-ed46-4bce-8071-ee277909a320.png)
     
