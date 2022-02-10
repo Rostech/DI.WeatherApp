@@ -3,6 +3,7 @@
 
 ![.net build workflow](https://github.com/rostech/DI.WeatherApp/actions/workflows/dotnet.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Generic badge](https://img.shields.io/badge/Reading-4min-<COLOR>.svg)]()
 
 ### 🧑‍🎓 Disclaimer:
 This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. You can demo source code below.
@@ -64,7 +65,7 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
      
   ```
    public class WeatherDataConsumer
-    {
+   {
         private readonly IWeatherService weatherService;
 
         /// <summary>
@@ -107,9 +108,89 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
     <ProjectReference Include="..\DI.WeatherApp.Services\DI.WeatherApp.Services.csproj" />
 <blockquote></details>
 
+
+    
 <details>
-  <summary>Business Logic Layer</summary>
-</details>
+  <summary>Business Logic Layer</summary><blockquote>
+  
+  ### DI.WeatherApp.Services
+  This represents the business layer and here you woul usually have some business logic. Current setup is for demo purposes.
+  
+  <details>
+      <summary>WeatherService.cs - weather service that uses the dummy weather forecast repository to return data</summary><blockquote>
+     
+  ```
+    public class WeatherService : IWeatherService
+    {
+        private readonly IDummyWeatherForecastRepository weatherForecastRepository;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WeatherService"/> class.
+        /// </summary>
+        /// <param name="weatherForecastRepository">The weather forecast repository.</param>
+        public WeatherService(IDummyWeatherForecastRepository weatherForecastRepository)
+        {
+            this.weatherForecastRepository = weatherForecastRepository;
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<WeatherForecast> Get()
+        {
+            return this.weatherForecastRepository.Get().Select(w => new WeatherForecast()
+            {
+                CityName = w.CityName,
+                Date = w.Date,
+                Summary = w.Summary,
+                TemperatureC = w.TemperatureC
+            });
+        }
+    }
+  ```
+  <blockquote></details>  
+    
+  <details>
+    <summary>IWeatherService.cs - abstraction over the WeatherService class</summary><blockquote>  
+  <blockquote></details>
+  <details>
+    <summary>WeatherForecast.cs - POCO holding weather data</summary><blockquote>
+    
+    public class WeatherForecast
+    {
+        /// <summary>
+        /// Gets or sets the name of the city.
+        /// </summary>
+        public string CityName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date.
+        /// </summary>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Gets or sets the temperature Celsius.
+        /// </summary>
+        public int TemperatureC { get; set; }
+
+        /// <summary>
+        /// Gets the temperature Fahrenheit.
+        /// </summary>
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+
+        /// <summary>
+        /// Gets or sets the summary.
+        /// </summary>
+        public string Summary { get; set; }
+    }
+    
+   <blockquote></details> 
+    
+    
+    At the moment the Business Layer is only referencing 
+    <ProjectReference Include="..\DI.WeatherApp.Services\DI.WeatherApp.Data.csproj" />
+<blockquote></details>    
+    
+    
+
 
 <details>
   <summary>Data access Layer</summary>
