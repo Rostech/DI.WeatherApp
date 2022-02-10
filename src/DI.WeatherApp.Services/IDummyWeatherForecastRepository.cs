@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DI.WeatherApp.Data
+namespace DI.WeatherApp.Services
 {
     public interface IDummyWeatherForecastRepository
     {
@@ -8,6 +8,6 @@ namespace DI.WeatherApp.Data
         /// Returns weather forecast data
         /// </summary>
         /// <returns></returns>
-        IEnumerable<WeatherForecastDbo> Get();
+        IEnumerable<WeatherForecast> Get();
     }
 }

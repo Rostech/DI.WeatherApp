@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DI.WeatherApp.Services;
 
 namespace DI.WeatherApp.Data
 {
@@ -25,8 +26,19 @@ namespace DI.WeatherApp.Data
 
         #endregion
 
+        public IEnumerable<WeatherForecast> Get()
+        {
+            return this.GetDummyData().Select(w => new WeatherForecast()
+            {
+                CityName = w.CityName,
+                Date = w.Date,
+                Summary = w.Summary,
+                TemperatureC = w.TemperatureC
+            });
+        }
+
         /// <inheritdoc/>
-        public IEnumerable<WeatherForecastDbo> Get()
+        private IEnumerable<WeatherForecastDbo> GetDummyData()
         {
             var random = new Random();
 
