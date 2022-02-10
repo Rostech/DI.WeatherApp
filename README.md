@@ -280,4 +280,11 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
     
 <blockquote></details>
     
- #### Altho we have some dependency injection in this setup, we are not inverting any dependencies thus not implementing the dependency inversion principle. 
+ #### Altho we have some dependency injection in this setup, we are not inverting any dependencies thus not implementing the dependency inversion principle.
+    
+![not-inverted-dependency](https://user-images.githubusercontent.com/10576276/153411510-6b83e74d-1210-465c-a5f6-4f32c2e76a97.png)
+
+As shown in the graph, the dependency is not inverted and the UI is depending on Business layer, which dependes on Data layer. 
+This looks fine, but the dependencies are not inverted.
+### So what?!
+To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer.
