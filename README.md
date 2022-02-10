@@ -285,6 +285,32 @@ Over the years I've been reading about SOLID and DI all over the web, but I thin
 ![not-inverted-dependency](https://user-images.githubusercontent.com/10576276/153411510-6b83e74d-1210-465c-a5f6-4f32c2e76a97.png)
 
 As shown in the graph, the dependency is not inverted and the UI is depending on Business layer, which dependes on Data layer. 
-This looks fine, but the dependencies are not inverted.
+This means that the higher level layer depends on the implementation details of the lower level layer. We're trying to use an interface to decouple this dependency but this is not enough. 
 ### So what?!
-To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer.
+To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer. Lets say that we need to change a propery name in the WeatherForecastDbo.cs
+    
+![changed-property-name](https://user-images.githubusercontent.com/10576276/153416701-2c656ac5-5f45-4c31-a51d-050ddc5712d8.png)
+
+ ### When we build the project we get the following errors.
+
+![build-errors](https://user-images.githubusercontent.com/10576276/153421063-b8fcbfa1-3f7f-498f-b02c-042df4531c62.png)
+    
+ The issue here is tha this error is now reflecting an outside project in the business layer. This means, that if we need to rename a property in our database, this would affect the business logic. We could think, that after we're using an interface (abstraction) we're safe from such things, but we didn't acutally invert the dependencies. 
+
+To fix this, we need to folow the simple rule - the client (higher modules) own the interface.
+    
+1. ### Change interface ownership. 
+    The IDummyWeatherForecastRepository should be owned by the DI.WeatherApp.Services instead of the DI.WeatherApp.Data
+    Also the ```IEnumerable<WeatherForecastDbo> Get(); ``` should now return ``` IEnumerable<WeatherForecast> Get(); ``` because this is all we need in the business layer.
+    
+    ![change-interface-ownership](https://user-images.githubusercontent.com/10576276/153426030-1846bd75-2470-4a4f-a34e-96066b18ff54.png)
+    
+2. ### Invert the dependency. 
+    Remove project reference to ```DI.WeatherApp.Data``` from ```DI.WeatherApp.Services``` and add a reference to ```DI.WeatherApp.Services``` in ```DI.WeatherApp.Data``` to start using the ```IDummyWeatherForecastRepository``` interface. We also need to move the ```WeatherForecastDbo``` mapping to WeatherForecast in the ```DummyWeatherForecastRepository``` because now it is reponsible for returning ```WeatherForecast``` data.
+
+    ![invert-project-dependencies](https://user-images.githubusercontent.com/10576276/153431201-b2077d3a-b322-45f8-8f2d-8f6e07d1c6ba.png)
+
+    ![interface-implementation](https://user-images.githubusercontent.com/10576276/153431241-b410afc9-c757-4194-a76f-57b179e392c2.png)
+
+    
+    
