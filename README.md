@@ -13,7 +13,7 @@ This summary on DI is based on my understanding of the DI principle (after resea
 #### High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should not depend on abstractions.
 
 ## The 🎯 of dependency inversion principle
-Is to avoid this highly coupled distribution with the mediation of an abstract layer and to increase the re-usability of higher/policy layers. It promotes loosely coupled architecture, flexibility, pluggabiliy within our code.
+Is to avoid this highly coupled distribution with the mediation of an abstract layer and to increase the re-usability of higher/policy layers. It promotes loosely coupled architecture, flexibility, pluggability within our code.
 
 ## 🥇 Golden rule
 High-level (client) modules should own the abstraction otherwise the dependency is not inverted!
@@ -27,7 +27,7 @@ High-level (client) modules should own the abstraction otherwise the dependency 
 
 ## 🧰 Demo
 
-This demo is a note to myself, say for future references, if/when I don't feel confident enough that I understand in practice what **DI** is all about.
+This demo is for future references if/when I don't feel confident enough that I understand in practice what **DI** is all about.
 I think dependency inversion is best explained in simple N-layered architecture so I'll try doing just that. 
 
 ![console-ui](https://user-images.githubusercontent.com/10576276/153451888-c6f22f1b-15fe-4fd9-99cd-3db2cfad4569.png)
@@ -287,10 +287,10 @@ I think dependency inversion is best explained in simple N-layered architecture 
     
 ![not-inverted-dependency](https://user-images.githubusercontent.com/10576276/153411510-6b83e74d-1210-465c-a5f6-4f32c2e76a97.png)
 
-As shown in the graph, the dependency is not inverted and the UI is depending on Business layer, which dependes on Data layer. 
-This means that the higher level layer depends on the implementation details of the lower level layer. We're trying to use an interface to decouple this dependency but this is not enough. 
+As shown in the graph, the dependency is not inverted and the UI is depending on the Business layer, which depends on Data layer. 
+This means that the higher-level layer depends on the implementation details of the lower-level layer. We're trying to use an interface to decouple this dependency but this is not enough. 
 ### So what?!
-To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer. Lets say that we need to change a propery name in the ```WeatherForecastDbo.cs```
+To demonstrate an issue with not inverting dependencies we could introduce a change in the Data layer. Let's say that we need to change a property name in the ```WeatherForecastDbo.cs```
     
 ![changed-property-name](https://user-images.githubusercontent.com/10576276/153416701-2c656ac5-5f45-4c31-a51d-050ddc5712d8.png)
 
@@ -298,9 +298,9 @@ To demonstrate an issue with not inverting dependencies we could introduce a cha
 
 ![build-errors](https://user-images.githubusercontent.com/10576276/153421063-b8fcbfa1-3f7f-498f-b02c-042df4531c62.png)
     
- The issue here is tha this error is now reflecting an outside project in the business layer. This means, that if we need to rename a property in our database, this would affect the business logic. We could think, that after we're using an interface (abstraction) we're safe from such things, but we didn't acutally invert the dependencies. 
+ The issue here is that this error is now reflecting an outside project in the business layer. This means, that if we need to rename a property in our database, this would affect the business logic. We could think, that after we're using an interface (abstraction) we're safe from such things, but we didn't actually invert the dependencies. 
 
-To fix this, we need to folow the simple rule - the client (higher modules) own the interface.
+To fix this, we need to follow the simple rule - the client (higher modules) own the interface.
     
 1. ### ✔️ Change interface ownership. 
     The IDummyWeatherForecastRepository should be owned by the DI.WeatherApp.Services instead of the DI.WeatherApp.Data
@@ -309,7 +309,7 @@ To fix this, we need to folow the simple rule - the client (higher modules) own 
     ![change-interface-ownership](https://user-images.githubusercontent.com/10576276/153426030-1846bd75-2470-4a4f-a34e-96066b18ff54.png)
     
 2. ### ✔️ Invert the dependency. 
-    Remove project reference to ```DI.WeatherApp.Data``` from ```DI.WeatherApp.Services``` and add a reference to ```DI.WeatherApp.Services``` in ```DI.WeatherApp.Data``` to start using the ```IDummyWeatherForecastRepository``` interface. We also need to move the ```WeatherForecastDbo``` mapping to WeatherForecast in the ```DummyWeatherForecastRepository``` because now it is reponsible for returning ```WeatherForecast``` data.
+    Remove project reference to ```DI.WeatherApp.Data``` from ```DI.WeatherApp.Services``` and add a reference to ```DI.WeatherApp.Services``` in ```DI.WeatherApp.Data``` to start using the ```IDummyWeatherForecastRepository``` interface. We also need to move the ```WeatherForecastDbo``` mapping to WeatherForecast in the ```DummyWeatherForecastRepository``` because now it is responsible for returning ```WeatherForecast``` data.
 
     ![invert-project-dependencies](https://user-images.githubusercontent.com/10576276/153431201-b2077d3a-b322-45f8-8f2d-8f6e07d1c6ba.png)
 
@@ -318,7 +318,7 @@ To fix this, we need to folow the simple rule - the client (higher modules) own 
     ![interface-implementation](https://user-images.githubusercontent.com/10576276/153431241-b410afc9-c757-4194-a76f-57b179e392c2.png)
     
 3. ### ✔️ Register all dependencies in the UI layer.
-    In our case the UI layer is the composition route for all dependencies.
+    In our case, the UI layer is the composition route for all dependencies.
     
     ![register-data-layer-in-ui](https://user-images.githubusercontent.com/10576276/153446989-e5250e3b-b216-4788-a409-5817b6b615fc.png)
     
@@ -330,7 +330,7 @@ To fix this, we need to folow the simple rule - the client (higher modules) own 
 ### 🎉 Did we invert the dependency? 🎉
 
 To verify that dependency was indeed inverted, we will introduce a change in the Data layer like before. 
-🚀 This time the error will be contained only in the ```DI.WeatherApp.Data``` and we don't need to update higher level modules.
+🚀 This time the error will be contained only in the ```DI.WeatherApp.Data``` and we don't need to update higher-level modules.
 
 ![inverted-dependency](https://user-images.githubusercontent.com/10576276/153450365-a9be6cf7-942d-4ea0-ac14-fed620f9855a.png)
 
