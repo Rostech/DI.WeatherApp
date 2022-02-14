@@ -2,8 +2,8 @@
 [SOLID] Dependency Inversion. What? How? 
 
 ![.net build workflow](https://github.com/rostech/DI.WeatherApp/actions/workflows/dotnet.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Generic badge](https://img.shields.io/badge/Reading-4min-<COLOR>.svg)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+[![Generic badge](https://img.shields.io/badge/Read-8min-blue.svg)]()
 
 ### 🧑‍🎓 Disclaimer:
 This summary on DI is based on my understanding of the DI principle (after research) and is for learning purposes. It's open for discussion and improvements. You can check out the demo source code below.
