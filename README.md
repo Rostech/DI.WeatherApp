@@ -10,7 +10,7 @@ This summary on DI is based on my understanding of the DI principle (after resea
 
 # Dependency Inversion
 ## 🧠 Definition
-#### High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should not depend on abstractions.
+#### High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should depend on abstractions.
 
 ## The 🎯 of dependency inversion principle
 Is to avoid this highly coupled distribution with the mediation of an abstract layer and to increase the re-usability of higher/policy layers. It promotes loosely coupled architecture, flexibility, pluggability within our code.
