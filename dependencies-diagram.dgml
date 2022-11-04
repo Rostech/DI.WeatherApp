@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="@2" Category="CodeSchema_Assembly" Bounds="-13.7275017866666,122.4920800144,183.256666666667,25" CodeSchemaProperty_StrongName="DI.WeatherApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(269d9d55-c35f-4aef-b13e-6b544e503cf6.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.Data.dll" />
-    <Node Id="@4" Category="CodeSchema_Assembly" Bounds="108.387088460618,67.5009138970356,200.953333333333,25" CodeSchemaProperty_StrongName="DI.WeatherApp.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(fceb2d42-6474-41d5-b044-792bd8d09a2d.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.Services.dll" />
-    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="-37.8475017866666,12.5079199856,231.496666666667,25" CodeSchemaProperty_StrongName="DI.WeatherApp.ConsoleClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(7c43de30-8e54-4920-adbd-f5206feed5ab.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.ConsoleClient.dll" />
-    <Node Id="src{DB288976-7B8C-43CD-8649-00A37E45489A}" Category="CodeMap_SolutionFolder" Bounds="-57.8475017866666,-27.4920800432,387.19167024,194.9841600864" Group="Expanded" Label="src" />
+    <Node Id="@2" Category="CodeSchema_Assembly" Bounds="44.12,150,183.256666666667,25" CodeSchemaProperty_StrongName="DI.WeatherApp.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(269d9d55-c35f-4aef-b13e-6b544e503cf6.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.Data.dll" />
+    <Node Id="@4" Category="CodeSchema_Assembly" Bounds="166.271666666667,95,200.953333333333,25" CodeSchemaProperty_StrongName="DI.WeatherApp.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(fceb2d42-6474-41d5-b044-792bd8d09a2d.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.Services.dll" />
+    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="20,40,231.496666666667,25" CodeSchemaProperty_StrongName="DI.WeatherApp.ConsoleClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(7c43de30-8e54-4920-adbd-f5206feed5ab.OutputPath)" Group="Collapsed" Label="DI.WeatherApp.ConsoleClient.dll" />
+    <Node Id="src{DB288976-7B8C-43CD-8649-00A37E45489A}" Category="CodeMap_SolutionFolder" Bounds="0,0,387.225,195" Group="Expanded" Label="src" />
   </Nodes>
   <Links>
-    <Link Source="@4" Target="@2" Category="References" Bounds="115.963015093292,92.5003046321421,63.1364933370276,26.5152407432953" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="15">
+    <Link Source="@4" Target="@2" Category="References" Bounds="173.819351196289,120,63.15625,26.5159912109375" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="15">
       <Category Ref="CodeMap_ProjectReference" />
       <Category Ref="CodeSchema_Calls" />
       <Category Ref="CodeSchema_FunctionPointer" />
     </Link>
-    <Link Source="@6" Target="@2" Category="References" Bounds="77.8891448974609,37.5026397705078,0,75.9938278198242" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
+    <Link Source="@6" Target="@2" Category="References" Bounds="135.748336791992,65,0,76" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="2">
       <Category Ref="CodeMap_ExternalReference" />
     </Link>
-    <Link Source="@6" Target="@4" Category="References" Bounds="107.665078243631,37.5002046321421,63.1364933370276,26.5152407432953" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="12">
+    <Link Source="@6" Target="@4" Category="References" Bounds="165.521057128906,65,63.1562652587891,26.515983581543" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="12">
       <Category Ref="CodeMap_ProjectReference" />
       <Category Ref="CodeSchema_Calls" />
     </Link>
@@ -48,7 +48,7 @@
     <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
     <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
     <Property Id="GroupLabel" DataType="System.String" />
-    <Property Id="Icon" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
     <Property Id="IsContainment" DataType="System.Boolean" />
     <Property Id="IsEnabled" DataType="System.Boolean" />
